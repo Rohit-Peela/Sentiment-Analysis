@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Sentiment Analysis</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static "bootstrap.min.css" %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static "cover.css" %}" rel="stylesheet">
+    <style>
+	textarea.form-control	 {
+    	  color: white;  
+        margin: 0px -65px 0px 0px;
+        height: 250px;
+        width: 1000px; 	
+        background: transparent;
+        font-size: 30px;
+        text-align: center;
+	}
+    </style>
+  </head>
+
+  <body>
+
+    <div class="site-wrapper">
+      <div class="site-wrapper-inner">
+        <div class="cover-container">
+          <div class="masthead clearfix" style="position:static;">
+            <div class="inner">
+              <h3 class="masthead-brand"><a href="/">Sentiment Analysis</a></h3>
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li class="active"><a href="/">Home</a></li>
+                  <li><a href="/home/feature">Abstract</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="inner cover">
+            <h1 class="cover-heading">Enter Review Text</h1>
+	    <textarea class="form-control form-rounded" rows="3"></textarea>
+	    <div class="row">
+            <p class="lead" style="padding-top:10px" id="process">
+              <a href="javascript:void(0)" class="btn btn-lg btn-primary">Process the text</a>
+            </p>
+	    <p class="lead" style="padding-top:10px; display:none" id="success">
+              <a href="#" class="btn btn-lg btn-success">Positive</a>
+            </p>
+	    <p class="lead" style="padding-top:10px; display:none" id="danger">
+              <a href="#" class="btn btn-lg btn-danger">Negative</a>
+            </p>
+	 
+	   <p class="lead" style="padding-top:10px" id="clear">
+              <a href="javascript:void(0)" class="btn btn-lg btn-default">Clear</a>
+            </p>
+	</div>
+          </div>
+          <div class="mastfoot" style="position:static">
+            <div class="inner">
+              <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="{% static "bootstrap.min.js" %}"></script>i
+    	<script>
+		$('#process').on('click', function() {
+        	var para = $('textarea').val();
+		console.log('para', para)
+        	$.ajax({
+        		url: '/home/process_word',
+        		data: {
+				review: para,
+				csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val()
+			},
+        		type: 'POST',
+			beforeSend: function() {
+	  			$("body").css("cursor", "progress");
+			},
+			complete:function(){
+	  			$("body").css("cursor", "default");
+			},
+        		success:function(data){
+				console.log('success', data)
+				if (data === 'True') {
+				    $('#success').show();
+				    $('#process').hide();	
+				} else {
+				    $('#danger').show();
+				    $('#process').hide(); 		
+				}
+        		}
+      		});
+      		});
+		$('#clear').on('click', function(){
+			$('#success').hide();
+			$('#danger').hide();
+			$('#process').show();
+			$('textarea').val('');
+		});
+	</script>
+  </body>
+</html>

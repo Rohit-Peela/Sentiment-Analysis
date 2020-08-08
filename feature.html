@@ -1,0 +1,150 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Sentiment Analysis</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static "bootstrap.min.css" %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static "cover.css" %}" rel="stylesheet">
+    <style>
+	textarea.form-control	 {
+	      background-color: #4a4a4a;
+    		color: white;  
+        margin: 0px -65px 0px 0px;
+        height: 250px;
+        width: 1000px; 	
+	}
+  pre {
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #ccc;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color:#626262;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+  }
+  .inner .cover {
+    float: left;
+    text-align: left;
+  }
+    </style>
+  </head>
+
+  <body>
+
+    <div class="site-wrapper">
+      <div class="site-wrapper-inner">
+        <div class="cover-container">
+          <div class="masthead clearfix" style="position:static;">
+            <div class="inner">
+              <h3 class="masthead-brand"><a href="/">Sentiment Analysis</a></h3>
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li><a href="/">Home</a></li>
+                  <li class="active"><a href="/home/feature">Abstract</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="inner cover">
+            <h1>Sentiment Classification using Naive Bayes Algorithm</h1>
+            <hr>
+            <br>
+            <h2>Abstract</h2>
+            <p>The customer review is important to improve
+              service for company, which have both close opinion and open
+              opinion. The open opinion means the comment as text which
+              shows emotion and comment directly from customer. However,
+              the company has many contents or group to evaluation
+              themselves by rating and total rating for a type of services which
+              there are many customer who needs to review. The problem is
+              some customers given rating contrast with their comments. The
+              other reviewers must read many comments and comprehensive
+              the comments that are different from the rating. Therefore, this
+              paper proposes the analysis and prediction rating from customer
+              reviews who commented as open opinion using probability's
+              classifier model. The classifier models are used case study of
+              customer review's hotel in open comments for training data to
+              classify comments as positive or negative called opinion mining.
+              In addition, this classifier model has calculated probability that
+              shows value of trend to give the rating using naive bayes
+              techniques, which gives correctly classifier to 94.37°~ compared
+              with decision tree Techniques.</p>
+              <hr>
+              <h2>Introduction</h2>
+              <p>Nowadays, a company or organization provide a business
+                  service which needs to get feedback from customer. With the
+                  rapid expansion of company or organization have more
+                  services and products online and enhance customer
+                  satisfaction. The provider will read customer review and other
+                  customers who need to use services or products will read
+                  review to express opinions on the services. The number of
+                  customer review is increasing or huge from website, blogs,
+                  forums and social media, which the services or product is
+                  interesting. Therefore, many customers will read comment
+                  randomly which is hard to read all comments and make
+                  decision the services or products. If customer reads a few
+                  reviews, customer might get opinion review to be bias.
+                  Therefore, opinion mining is a technique of field area of
+                  information extraction from text processing, which is benefit
+                  and many opportunities to improve or develop factor to
+                  business work by this analysis. The problem is the comments
+                  from customer review about products or services, which are
+                  contrast with comments. For example, the customer commented "Even if I stay alone, it was safe, clean and suite
+                  for seminar". However, the customer given rating only 5.7
+                  which others customer expected more rating. Or the customer
+                  commented "Old room, dirty, and water flow in toilet was very
+                  slow. Breakfast was not delicious, services was not good",
+                  customer given value rating 4.3, it seems to bias their
+                  comments. Therefore, the opinion mining is computing value
+                  automatically which can be trended to their opinion to judge
+                  the comments negative and positive.
+                  Many researches in sentiment analysis and opinion mining
+                  have been many languages, for example, Chinese [1],[2],[3],
+                  Arabic[4],[5], Vietnamese[6], and Thai[7]. These researches
+                  focused into 2 ways: analysis of sentence has level of
+                  sentiment from emotion word and calculated score ofsimilarity
+                  or cluster with the kind of word as positive or negative called
+                  sentiment polarity [7],[8],[9],[10]. Secondly, the papers
+                  [11],[12],[13] proposed and survey the classifier model to
+                  summarize sentence as positive and negative and try to apply
+                  in other case studies [14], [15]. However, the summarized from
+                  opinion sentences are unable to show the continuous value
+                  trending to negative and positive. For example, sentiment
+                  analysis summarizes as positive, however, the customer still
+                  needs to know rating the overall value of positive opinion
+                  indicating a number. Therefore, our approach will be proposed
+                  methodology in this paper that can be generating from
+                  probability of classifier models.</p>
+                  <hr>
+                  <h2>Proposed Methodology</h2>
+                  <img src={% static "methodology.jpeg" %} style="border-radius: 7%;" />
+                  <hr>
+              </div>
+          <div class="mastfoot" style="position:static">
+            <div class="inner">
+              <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="{% static "bootstrap.min.js" %}"></script>i
+  </body>
+</html>
